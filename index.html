@@ -1,0 +1,613 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parc National de Nouabalé-Ndoki | EDIH BATEKOLO VERLIN</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f3;
+            color: #243024;
+            line-height: 1.6;
+        }
+
+        /* ===== MENU ===== */
+        header {
+            background: #123d25;
+            color: white;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d7b84a;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #d7b84a;
+        }
+
+        /* ===== ACCUEIL ===== */
+        .hero {
+            min-height: 90vh;
+            background:
+                linear-gradient(rgba(5,35,18,0.65), rgba(5,35,18,0.75)),
+                url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d7b84a;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d7b84a;
+            color: #123d25;
+            padding: 13px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #123d25;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #667066;
+        }
+
+        /* ===== PRESENTATION ===== */
+        .presentation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .presentation img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .presentation h3 {
+            font-size: 28px;
+            color: #123d25;
+            margin-bottom: 15px;
+        }
+
+        /* ===== CARTES ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #123d25;
+            margin-bottom: 10px;
+        }
+
+        /* ===== FAUNE ===== */
+        #faune {
+            background: #e8f0e7;
+        }
+
+        .animals {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .animal {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .animal img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .animal h3 {
+            padding: 15px 15px 5px;
+            color: #123d25;
+        }
+
+        .animal p {
+            padding: 0 15px 18px;
+            color: #666;
+        }
+
+        /* ===== CONSERVATION ===== */
+        .conservation {
+            background: #123d25;
+            color: white;
+            text-align: center;
+        }
+
+        .conservation h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .conservation p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* ===== INFOS ===== */
+        .info-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .info {
+            background: white;
+            padding: 25px;
+            border-left: 5px solid #d7b84a;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .info h3 {
+            color: #123d25;
+            margin-bottom: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #082315;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #d7b84a;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            margin: 6px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .presentation,
+            .cards,
+            .animals,
+            .info-box {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .presentation,
+            .cards,
+            .animals,
+            .info-box {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= MENU ================= -->
+<header>
+    <nav>
+        <div class="logo">
+            EDIH BATEKOLO-<span>VERLIN</span>
+        </div>
+
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#faune">Faune</a></li>
+            <li><a href="#conservation">Conservation</a></li>
+            <li><a href="#infos">Informations</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- ================= ACCUEIL ================= -->
+<section class="hero" id="accueil">
+    <div class="hero-content">
+
+        <h1>
+            Parc National de
+            <span>Nouabalé-Ndoki</span>
+        </h1>
+
+        <p>
+            Découvrez l'un des grands espaces naturels du bassin du Congo,
+            au cœur de la République du Congo.
+        </p>
+
+        <a href="#apropos" class="btn">
+            Découvrir le parc
+        </a>
+
+    </div>
+</section>
+
+
+<!-- ================= PRESENTATION ================= -->
+<section id="apropos">
+
+    <div class="section-title">
+        <h2>À propos du parc</h2>
+        <p>Un patrimoine naturel exceptionnel de la République du Congo</p>
+    </div>
+
+    <div class="presentation">
+
+        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1000&q=80"
+             alt="Forêt tropicale">
+
+        <div>
+            <h3>Un joyau de la forêt du bassin du Congo</h3>
+
+            <p>
+                Le Parc national de Nouabalé-Ndoki est situé dans le nord
+                de la République du Congo. Il protège une vaste zone de
+                forêt tropicale primaire particulièrement riche en
+                biodiversité.
+            </p>
+
+            <br>
+
+            <p>
+                Le parc constitue un habitat important pour de nombreuses
+                espèces animales et végétales. Il joue également un rôle
+                essentiel dans la conservation des écosystèmes forestiers
+                du bassin du Congo.
+            </p>
+
+            <br>
+
+            <p>
+                Sa protection contribue à préserver la nature et à maintenir
+                un environnement favorable aux générations futures.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= IMPORTANCE ================= -->
+<section>
+
+    <div class="section-title">
+        <h2>Pourquoi ce parc est important ?</h2>
+        <p>Un espace naturel essentiel à la biodiversité</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌳</div>
+            <h3>Forêt tropicale</h3>
+            <p>
+                Un vaste écosystème forestier abritant une biodiversité
+                exceptionnelle.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐘</div>
+            <h3>Faune sauvage</h3>
+            <p>
+                Le parc constitue un refuge pour de nombreuses espèces
+                animales.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Patrimoine mondial</h3>
+            <p>
+                Un patrimoine naturel d'une grande importance pour la
+                conservation de la planète.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAUNE ================= -->
+<section id="faune">
+
+    <div class="section-title">
+        <h2>La faune du parc</h2>
+        <p>Quelques animaux emblématiques de la forêt</p>
+    </div>
+
+    <div class="animals">
+
+        <div class="animal">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80"
+                 alt="Éléphant">
+            <h3>Éléphant de forêt</h3>
+            <p>
+                Une espèce emblématique des forêts d'Afrique centrale.
+            </p>
+        </div>
+
+        <div class="animal">
+            <img src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?auto=format&fit=crop&w=800&q=80"
+                 alt="Singe">
+            <h3>Primates</h3>
+            <p>
+                Plusieurs espèces de primates vivent dans cet environnement.
+            </p>
+        </div>
+
+        <div class="animal">
+            <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80"
+                 alt="Gorille">
+            <h3>Gorilles</h3>
+            <p>
+                Les gorilles font partie des espèces importantes de la
+                biodiversité du nord du Congo.
+            </p>
+        </div>
+
+        <div class="animal">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80"
+                 alt="Animaux sauvages">
+            <h3>Autres espèces</h3>
+            <p>
+                La forêt abrite également de nombreuses autres espèces
+                animales.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONSERVATION ================= -->
+<section class="conservation" id="conservation">
+
+    <h2>Protéger pour les générations futures</h2>
+
+    <p>
+        La conservation de Nouabalé-Ndoki est essentielle pour protéger
+        la biodiversité, les forêts tropicales et les espèces sauvages.
+        La protection de ces espaces naturels contribue également à la
+        lutte contre la dégradation des écosystèmes.
+    </p>
+
+    <br>
+
+    <a href="#infos" class="btn">
+        En savoir plus
+    </a>
+
+</section>
+
+
+<!-- ================= INFORMATIONS ================= -->
+<section id="infos">
+
+    <div class="section-title">
+<section id="informations">
+
+    <div class="section-title">
+        <h2>Informations générales</h2>
+        <p>Découvrez les principales informations sur le Parc national de Nouabalé-Ndoki</p>
+    </div>
+
+    <div class="info-container">
+
+        <div class="info-card">
+            <div class="info-icon">🌍</div>
+            <h3>Nom</h3>
+            <p>
+                Parc national de Nouabalé-Ndoki
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🇨🇬</div>
+            <h3>Pays</h3>
+            <p>
+                République du Congo
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">📍</div>
+            <h3>Localisation</h3>
+            <p>
+                Département de la Sangha, dans le nord de la République du Congo,
+                au cœur du bassin du Congo.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🌳</div>
+            <h3>Type d'environnement</h3>
+            <p>
+                Forêt tropicale humide et forêt dense du bassin du Congo.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">📅</div>
+            <h3>Création</h3>
+            <p>
+                Le parc national a été créé en 1993 afin de protéger
+                une importante zone de forêt tropicale et sa biodiversité.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🐘</div>
+            <h3>Faune</h3>
+            <p>
+                Le parc abrite notamment des éléphants de forêt,
+                des gorilles, des chimpanzés, des buffles de forêt
+                et de nombreuses autres espèces.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🌿</div>
+            <h3>Flore</h3>
+            <p>
+                Une végétation forestière riche composée de nombreuses
+                espèces d'arbres, de plantes et d'autres végétaux.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🛡️</div>
+            <h3>Mission</h3>
+            <p>
+                Protéger les écosystèmes, préserver la biodiversité
+                et contribuer à la conservation de la forêt du bassin du Congo.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🌎</div>
+            <h3>Importance</h3>
+            <p>
+                Nouabalé-Ndoki constitue une zone majeure de conservation
+                de l
+```
+
+```
